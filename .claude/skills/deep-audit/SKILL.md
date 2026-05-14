@@ -30,7 +30,7 @@ Run a comprehensive consistency audit across the entire repository, fix all issu
 Before spawning agents, run the mechanical parity checks:
 
 ```bash
-python3 scripts/check-skill-integrity.py --verbose
+python3 claude_utilities/check-skill-integrity.py --verbose
 ```
 
 This catches four classes of bug that agent-based audits have historically missed:
@@ -56,7 +56,7 @@ Focus: `guide/workflow-guide.qmd`
 - No stale counts from previous versions
 
 #### Agent 2: Executable Code Quality
-Focus: **all** executable code in the repo — `.claude/hooks/*.py`, `.claude/hooks/*.sh`, `scripts/*.py`, `scripts/*.sh`, `.claude/scripts/*.sh`. Not just `.claude/hooks/` — when PR #93 added new code under `scripts/`, the original narrow scope meant Copilot + Codex caught 5 bugs the audit missed.
+Focus: **all** executable code in the repo — `.claude/hooks/*.py`, `.claude/hooks/*.sh`, `claude_utilities/*.py`, `claude_utilities/*.sh`, `.claude/claude_utilities/*.sh`. Not just `.claude/hooks/` — when PR #93 added new code under `claude_utilities/`, the original narrow scope meant Copilot + Codex caught 5 bugs the audit missed.
 
 Hook-specific checks (Stop/PreToolUse/SessionStart protocols, `CLAUDE_PROJECT_DIR` usage, hash-length consistency) apply only to `.claude/hooks/`. Everything below applies to ALL executable code:
 

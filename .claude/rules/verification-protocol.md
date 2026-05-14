@@ -10,7 +10,7 @@ paths:
 **At the end of EVERY task, Claude MUST verify the output works correctly.** This is non-negotiable.
 
 ## For Quarto/HTML Slides:
-1. Run `./scripts/sync_to_docs.sh` (or `./scripts/sync_to_docs.sh LectureN`) to render and deploy
+1. Run `./claude_utilities/sync_to_docs.sh` (or `./claude_utilities/sync_to_docs.sh LectureN`) to render and deploy
 2. Open the HTML in browser: `open docs/slides/LectureX.html` (macOS) or `xdg-open` (Linux)
 3. Verify images display by reading 2-3 image files to confirm valid content
 4. Check HTML source for correct image paths
@@ -32,7 +32,7 @@ paths:
 6. **Freshness check:** Before using any TikZ SVG, verify extract_tikz.tex matches current Beamer source
 
 ## For R Scripts:
-1. Run `Rscript scripts/R/filename.R`
+1. Run `Rscript programs/R/filename.R`
 2. Verify output files (PDF, RDS) were created with non-zero size
 3. Spot-check estimates for reasonable magnitude
 

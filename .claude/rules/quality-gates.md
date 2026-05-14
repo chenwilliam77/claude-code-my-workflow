@@ -2,7 +2,7 @@
 paths:
   - "Slides/**/*.tex"
   - "Quarto/**/*.qmd"
-  - "scripts/**/*.R"
+  - "programs/**/*.R"
 ---
 
 # Quality Review & Scoring Rubrics

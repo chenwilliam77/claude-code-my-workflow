@@ -23,11 +23,11 @@ This repository is a **template** designed for academic researchers to fork and 
 2. **Read [CLAUDE.md](../CLAUDE.md) and the [guide](https://psantanna.com/claude-code-my-workflow/workflow-guide.html)** so your contribution fits the existing patterns.
 3. **Run the validate script** to confirm you don't break the onboarding path:
    ```bash
-   ./scripts/validate-setup.sh
+   ./claude_utilities/validate-setup.sh
    ```
 4. **Run quality gates** on any `.qmd`, `.tex`, or `.R` you modify:
    ```bash
-   python3 scripts/quality_score.py path/to/file
+   python3 claude_utilities/quality_score.py path/to/file
    ```
 5. **Test against ≥2 domains** when adding skills/agents — show that your contribution generalizes.
 6. **Update both README and the guide** when adding features. Skill counts must agree across `CLAUDE.md`, `README.md`, `docs/index.html`, and `guide/workflow-guide.qmd`.

@@ -26,7 +26,7 @@ When you modify a Beamer `.tex` file, you MUST also apply the equivalent change 
 1. Apply fix to Beamer `.tex`
 2. **Immediately** apply equivalent fix to Quarto `.qmd`
 3. Compile Beamer (3-pass xelatex)
-4. Render Quarto (`./scripts/sync_to_docs.sh LectureN`)
+4. Render Quarto (`./claude_utilities/sync_to_docs.sh LectureN`)
 5. Only then report task complete
 
 ## LaTeX → Quarto Translation Reference

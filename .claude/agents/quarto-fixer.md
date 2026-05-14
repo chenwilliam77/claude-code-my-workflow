@@ -74,7 +74,7 @@ The report will be at: `quality_reports/[Lecture]_qa_critic_round[N].md`
 ### Step 3: Re-Render
 
 ```bash
-./scripts/sync_to_docs.sh LectureX
+./claude_utilities/sync_to_docs.sh LectureX
 ```
 
 ### Step 4: Verify and Report
@@ -96,7 +96,7 @@ The report will be at: `quality_reports/[Lecture]_qa_critic_round[N].md`
 | M1 | Major | Fixed | [description] |
 
 ## Render Status
-- **Command:** `./scripts/sync_to_docs.sh LectureX`
+- **Command:** `./claude_utilities/sync_to_docs.sh LectureX`
 - **Result:** Success / Failed
 
 ## Ready for Re-Review

@@ -16,7 +16,7 @@ Stage changes, verify quality gates, commit with a descriptive message, create a
 **Run before branching.** For every changed `.qmd`, `.tex`, or `.R` file that has quality rubrics, run:
 
 ```bash
-python3 scripts/quality_score.py <changed-file-paths>
+python3 claude_utilities/quality_score.py <changed-file-paths>
 ```
 
 - If any file scores below **80**, halt and report the findings. The user must either fix the issues or explicitly override with phrases like *"commit anyway"* or *"skip quality gate"*.
@@ -29,7 +29,7 @@ Spawn the **verifier** agent (via `Task` with `subagent_type=verifier`) to run c
 **Runs unconditionally.** Enforces that count claims (`"14 agents, 28 skills, 24 rules, 6 hooks"` and siblings) across README.md, CLAUDE.md, the guide source + rendered HTML, the landing page, and the skill template all agree with the on-disk counts of `.claude/{skills,agents,rules,hooks}`:
 
 ```bash
-./scripts/check-surface-sync.sh
+./claude_utilities/check-surface-sync.sh
 ```
 
 - **Exit 0:** all counts consistent — continue.

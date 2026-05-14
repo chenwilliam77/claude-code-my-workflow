@@ -37,6 +37,6 @@ labels: bug
 
 ## Have you checked
 
-- [ ] `./scripts/validate-setup.sh` exits cleanly
+- [ ] `./claude_utilities/validate-setup.sh` exits cleanly
 - [ ] The bug is in the **template** (not in your fork's customizations)
 - [ ] The bug is reproducible from a clean clone

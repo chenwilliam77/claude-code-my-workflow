@@ -28,7 +28,7 @@ Extract TikZ diagrams from the Beamer source, compile to multi-page PDF, and con
 Before compiling, verify every `\begin{tikzpicture}` block in `Figures/$ARGUMENTS/extract_tikz.tex` satisfies the prevention rules in [`.claude/rules/tikz-prevention.md`](../../rules/tikz-prevention.md). The pre-check is a small Python script shared with `/new-diagram` so both skills enforce identical behavior:
 
 ```bash
-python3 scripts/check-tikz-prevention.py "Figures/$ARGUMENTS/extract_tikz.tex"
+python3 claude_utilities/check-tikz-prevention.py "Figures/$ARGUMENTS/extract_tikz.tex"
 ```
 
 What it checks:
@@ -72,7 +72,7 @@ done
 ### Step 6: Sync to docs/ for deployment
 ```bash
 cd ../..
-./scripts/sync_to_docs.sh $ARGUMENTS
+./claude_utilities/sync_to_docs.sh $ARGUMENTS
 ```
 
 ### Step 7: Verify SVG files

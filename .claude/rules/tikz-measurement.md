@@ -3,8 +3,8 @@ paths:
   - "Slides/**/*.tex"
   - "Figures/**/*.tex"
   - "Preambles/**/*.tex"
-  - "scripts/**/*.py"
-  - "scripts/**/*.R"
+  - "claude_utilities/**/*.py"
+  - "programs/**/*.R"
 ---
 
 # TikZ & Figure Measurement Rules

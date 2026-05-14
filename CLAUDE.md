@@ -35,7 +35,8 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ├── Slides/                      # Beamer .tex files
 ├── Quarto/                      # RevealJS .qmd files + theme
 ├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
+├── claude_utilities/            # Claude Code infrastructure scripts (quality scoring, sync, checks)
+├── programs/                    # Analysis and data cleaning code (R, Python, Stata, etc.)
 ├── quality_reports/             # Plans, session logs, merge reports, decision records
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
@@ -54,16 +55,16 @@ TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
 TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
 
 # Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
+./claude_utilities/sync_to_docs.sh LectureN
 
 # Quality score
-python scripts/quality_score.py Quarto/file.qmd
+python claude_utilities/quality_score.py Quarto/file.qmd
 
 # Palette sync (LaTeX ↔ SCSS)
-./scripts/check-palette-sync.sh
+./claude_utilities/check-palette-sync.sh
 
 # Surface-count sync (README ↔ CLAUDE.md ↔ guide ↔ landing page)
-./scripts/check-surface-sync.sh
+./claude_utilities/check-surface-sync.sh
 ```
 
 **Palette contract:** color names in `Preambles/header.tex` must match SCSS variables in `Quarto/theme-template.scss`. See [`Preambles/README.md`](Preambles/README.md).

@@ -11,8 +11,8 @@
 
 ## Test plan
 
-- [ ] `./scripts/validate-setup.sh` exits 0
-- [ ] `python3 scripts/quality_score.py <changed-files>` ≥ 80
+- [ ] `./claude_utilities/validate-setup.sh` exits 0
+- [ ] `python3 claude_utilities/quality_score.py <changed-files>` ≥ 80
 - [ ] `/deep-audit` finds no new inconsistencies
 - [ ] Manually exercised the changed skill/agent/hook on a real file
 - [ ] Updated **both** `README.md` and `guide/workflow-guide.qmd` if user-facing

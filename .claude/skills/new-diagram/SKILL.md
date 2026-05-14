@@ -68,7 +68,7 @@ Ask the user what the diagram should show. Edit `$DST` with the `Edit` tool:
 Run the same shared Python checker `/extract-tikz` uses — this is the one tool that enforces both P3 and P4 consistently across the two skills:
 
 ```bash
-python3 scripts/check-tikz-prevention.py "$DST"
+python3 claude_utilities/check-tikz-prevention.py "$DST"
 ```
 
 - Exit `0` → passed, continue.

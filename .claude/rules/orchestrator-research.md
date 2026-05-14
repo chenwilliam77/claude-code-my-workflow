@@ -1,6 +1,6 @@
 ---
 paths:
-  - "scripts/**/*.R"
+  - "programs/**/*.R"
   - "explorations/**"
   - "Figures/**/*.R"
 ---

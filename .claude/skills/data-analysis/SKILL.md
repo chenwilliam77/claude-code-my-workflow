@@ -1,6 +1,6 @@
 ---
 name: data-analysis
-description: End-to-end R data analysis pipeline — exploration → cleaning → regression → publication-ready tables and figures. Use when user says "analyze this dataset", "run a regression on X", "explore this CSV", "full analysis workflow", "get me summary stats and a regression", or points at a `.csv`/`.rds`/`.dta` and asks for empirical results. Produces numbered R scripts in `scripts/R/` and outputs to `scripts/R/_outputs/`.
+description: End-to-end R data analysis pipeline — exploration → cleaning → regression → publication-ready tables and figures. Use when user says "analyze this dataset", "run a regression on X", "explore this CSV", "full analysis workflow", "get me summary stats and a regression", or points at a `.csv`/`.rds`/`.dta` and asks for empirical results. Produces numbered R scripts in `programs/R/` and outputs to `programs/R/_outputs/`.
 argument-hint: "[dataset path or description of analysis goal]"
 allowed-tools: ["Read", "Grep", "Glob", "Write", "Edit", "Bash", "Task", "Monitor"]
 ---
@@ -16,7 +16,7 @@ Run an end-to-end data analysis in R: load, explore, analyze, and produce public
 ## Constraints
 
 - **Follow R code conventions** in `.claude/rules/r-code-conventions.md`
-- **Save all scripts** to `scripts/R/` with descriptive names
+- **Save all scripts** to `programs/R/` with descriptive names
 - **Save all outputs** (figures, tables, RDS) to `output/`
 - **Use `saveRDS()`** for every computed object — Quarto slides may need them
 - **Use project theme** for all figures (check for custom theme in `.claude/rules/`)
@@ -100,7 +100,7 @@ Based on the research question:
 
 ```
 Delegate to the r-reviewer agent:
-"Review the script at scripts/R/[script_name].R"
+"Review the script at programs/R/[script_name].R"
 ```
 
 4. Address any Critical or High issues from the review.
@@ -159,7 +159,7 @@ dir.create("output/analysis", recursive = TRUE, showWarnings = FALSE)
 
 For regressions, simulations, or bootstrap loops that take more than a couple of minutes, launch via Bash with `run_in_background: true` and then use Anthropic's **Monitor tool** to stream R stdout into the conversation in real time. Pattern:
 
-1. Background-launch: `Rscript scripts/R/03_analyze.R` with `run_in_background: true`. Capture the `bash_id`.
+1. Background-launch: `Rscript programs/R/03_analyze.R` with `run_in_background: true`. Capture the `bash_id`.
 2. Use Monitor on the `bash_id` until a milestone fires (e.g., `Coefficients table written`, or process exit).
 3. Continue or course-correct based on what the stream reveals.
 

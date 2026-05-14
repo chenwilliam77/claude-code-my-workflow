@@ -2,7 +2,7 @@
 
 **Purpose.** A living catalogue of drift patterns that Copilot / Codex / human reviewers have flagged on recent PRs. Deep-audit agents read this as additional prompt context so they inherit the accumulated knowledge from past rounds.
 
-**Principle.** Each class of bug we see in review = one entry. Grow the file, don't rewrite it. Mechanical checks (in `scripts/check-skill-integrity.py`) close the obvious holes; this file closes the subtler ones that require judgment.
+**Principle.** Each class of bug we see in review = one entry. Grow the file, don't rewrite it. Mechanical checks (in `claude_utilities/check-skill-integrity.py`) close the obvious holes; this file closes the subtler ones that require judgment.
 
 **How to use.** When writing a deep-audit agent prompt, say "read `.claude/references/audit-pet-peeves.md` and explicitly check for each class before reporting clean." When triaging a Copilot/Codex finding, decide: is this a new class (add entry) or an existing class re-surfacing (bump the evidence list)?
 
@@ -12,7 +12,7 @@
 
 **Example:** PR #92. `/lit-review`, `/research-ideation`, `/respond-to-referees`, `/interview-me` each documented "spawn `claim-verifier` via `Task` with `context=fork`" in their body, but none of them had `Task` in `allowed-tools`. Codex + Copilot both caught; deep-audit missed.
 
-**How to catch.** Automated by `scripts/check-skill-integrity.py` (check 1, Task-only pattern). For other tools (Edit, Write, MultiEdit, NotebookEdit), the script has narrower patterns. WebSearch / WebFetch / Read / Grep / Glob / Bash are intentionally excluded — too many prose false positives.
+**How to catch.** Automated by `claude_utilities/check-skill-integrity.py` (check 1, Task-only pattern). For other tools (Edit, Write, MultiEdit, NotebookEdit), the script has narrower patterns. WebSearch / WebFetch / Read / Grep / Glob / Bash are intentionally excluded — too many prose false positives.
 
 **Why deep-audit missed it.** Agent 3 prompt said "allowed-tools values are sensible" — didn't cross-check against body invocations.
 
@@ -24,7 +24,7 @@
 
 **Example:** PR #92 (Copilot). Skills added a `--no-verify` opt-out in the body but didn't advertise it in `argument-hint`. Users wouldn't discover the documented opt-out from the one-line hint.
 
-**How to catch.** Automated by `scripts/check-skill-integrity.py` (check 2). Detects flags in (a) markdown table first cells, (b) list items, (c) lines with explicit opt-out language. Misses free-form prose descriptions of flags — that's intentional; prose mentions don't imply a real supported option.
+**How to catch.** Automated by `claude_utilities/check-skill-integrity.py` (check 2). Detects flags in (a) markdown table first cells, (b) list items, (c) lines with explicit opt-out language. Misses free-form prose descriptions of flags — that's intentional; prose mentions don't imply a real supported option.
 
 **Why deep-audit missed it.** Nobody was looking at `argument-hint` as a coverage surface.
 
@@ -36,7 +36,7 @@
 
 **Example:** PR #87. `r-code-conventions.md` linked to `r-reviewer.md#category-11-numerical-discipline`, but the actual heading was `### 11. NUMERICAL DISCIPLINE` → GitHub anchor `11-numerical-discipline`. Copilot caught.
 
-**How to catch.** Automated by `scripts/check-skill-integrity.py` (check 3). For every `[text](path#anchor)` link, resolve `path` and check `anchor` against a GitHub-flavored-markdown anchorize of each heading in the target.
+**How to catch.** Automated by `claude_utilities/check-skill-integrity.py` (check 3). For every `[text](path#anchor)` link, resolve `path` and check `anchor` against a GitHub-flavored-markdown anchorize of each heading in the target.
 
 **Why deep-audit missed it.** Agent 1 checked "cross-references and anchors resolve" but didn't actually implement the heading → anchor transformation.
 
@@ -72,7 +72,7 @@
 
 **Example:** PR #92. `post-flight-verification.md` listed `/interview-me` in its `paths:`, claiming the skill runs Post-Flight. But `/interview-me/SKILL.md` had no Post-Flight section — silent drift between rule and implementation.
 
-**How to catch.** Automated by `scripts/check-skill-integrity.py` (check 4). For each rule, a keyword map declares which body keywords the skill must contain (e.g. `post-flight-verification.md` → body must mention `claim-verifier` or `Post-Flight`). Update the keyword map whenever a new rule ships.
+**How to catch.** Automated by `claude_utilities/check-skill-integrity.py` (check 4). For each rule, a keyword map declares which body keywords the skill must contain (e.g. `post-flight-verification.md` → body must mention `claim-verifier` or `Post-Flight`). Update the keyword map whenever a new rule ships.
 
 **Why deep-audit missed it.** Agent 3 checked "rule paths: reference existing directories" but not whether skills in those paths actually implement the rule.
 
@@ -160,7 +160,7 @@
 
 **How to catch.** When reading a function's docstring, extract every behavioral claim (bidirectional, fail-open, exits 1 on X, returns Y when Z) and verify the implementation matches. Contracts lie by omission: if the docstring says "X … and vice versa", the code must actually do both.
 
-**Why deep-audit missed it.** Agent 2's original scope was `.claude/hooks/` only. New code in `scripts/` bypassed the audit entirely. Even with correct scope, "docstring claims X but code does Y" is a class that requires reading both carefully — easy to miss on a skim.
+**Why deep-audit missed it.** Agent 2's original scope was `.claude/hooks/` only. New code in `claude_utilities/` bypassed the audit entirely. Even with correct scope, "docstring claims X but code does Y" is a class that requires reading both carefully — easy to miss on a skim.
 
 **When to apply.** Any function or script whose docstring makes a behavioral claim. Especially critical for code that's about to be shipped as part of audit infrastructure itself — a bug here undermines everything the code is meant to check.
 
@@ -246,7 +246,7 @@ A future mechanical check could count `.claude/{skills,agents,rules}/*` and grep
 ## Meta — how this file is maintained
 
 - After any PR where a review bot catches something deep-audit missed, append a new entry (or extend an existing one with new evidence).
-- When an entry's class is automated by `scripts/check-skill-integrity.py` or another mechanical check, note it — but keep the entry, it's still useful context for reviewers.
+- When an entry's class is automated by `claude_utilities/check-skill-integrity.py` or another mechanical check, note it — but keep the entry, it's still useful context for reviewers.
 - Target ≤ 20 entries; if we hit 25, review + merge related classes or archive resolved ones to a `_resolved.md` sibling.
 - Reference this file from `.claude/skills/deep-audit/SKILL.md` so all 4 agents load it.
 - Link from MEMORY.md `[LEARN:audit]` entries when a specific lesson ties to an entry here.

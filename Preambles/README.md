@@ -29,19 +29,19 @@ TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode YourLecture.t
 
 Color names in `header.tex` **must** match the SCSS variable names in [`../Quarto/theme-template.scss`](../Quarto/theme-template.scss) so Beamer and Quarto renderings use the same palette.
 
-The `scripts/check-palette-sync.sh` script greps both files and reports any divergence:
+The `claude_utilities/check-palette-sync.sh` script greps both files and reports any divergence:
 
 ```bash
-./scripts/check-palette-sync.sh
+./claude_utilities/check-palette-sync.sh
 ```
 
-It's also invoked (non-blocking) from `./scripts/validate-setup.sh`.
+It's also invoked (non-blocking) from `./claude_utilities/validate-setup.sh`.
 
 When you customize the palette for your project:
 
 1. Edit HEX values in both `Preambles/header.tex` (LaTeX) **and** `Quarto/theme-template.scss` (SCSS).
 2. Keep the names aligned: `primary-blue`, `primary-gold`, `highlight-yellow`, `light-bg`, `jet`, `positive`, `negative`, `neutral`, `hi-slate`, `hi-green`, `hi-red`.
-3. Run `./scripts/check-palette-sync.sh` — it should report "in sync".
+3. Run `./claude_utilities/check-palette-sync.sh` — it should report "in sync".
 
 ## What's inside
 

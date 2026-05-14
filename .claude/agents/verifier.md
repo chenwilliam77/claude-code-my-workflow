@@ -25,7 +25,7 @@ TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode FILENAME.tex 
 
 ### For `.qmd` files (Quarto slides):
 ```bash
-./scripts/sync_to_docs.sh LectureN 2>&1 | tail -20
+./claude_utilities/sync_to_docs.sh LectureN 2>&1 | tail -20
 ```
 - Check exit code
 - Verify HTML output exists in `docs/slides/`
@@ -35,7 +35,7 @@ TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode FILENAME.tex 
 
 ### For `.R` files (R scripts):
 ```bash
-Rscript scripts/R/FILENAME.R 2>&1 | tail -20
+Rscript programs/R/FILENAME.R 2>&1 | tail -20
 ```
 - Check exit code
 - Verify output files (PDF, RDS) were created
