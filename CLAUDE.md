@@ -37,7 +37,7 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ├── docs/                        # GitHub Pages (auto-generated)
 ├── claude_utilities/            # Claude Code infrastructure scripts (quality scoring, sync, checks)
 ├── programs/                    # Analysis and data cleaning code (R, Python, Stata, etc.)
-├── quality_reports/             # Plans, session logs, merge reports, decision records
+├── quality_reports/             # Plans, session logs, handoff documents, merge reports, decision records
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
 └── master_supporting_docs/      # Papers and existing slides
@@ -147,3 +147,10 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 | --- | --- | --- | --- |
 | HelloWorld *(sample — delete when ready)* | `HelloWorld.tex` | `HelloWorld.qmd` | Minimal deck to verify setup |
 | 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
+
+---
+
+### Tracking Progress Across Sessions
+
+1. Create a session log at the start of a session with a date stamp. After substantial changes, update the session log with what was done.
+2. When instructed to create handoff documents, always put the doc in quality_reports/handoffs/ into a markdown file of the form "handoff_YYYYMMDD_short_description.md"
