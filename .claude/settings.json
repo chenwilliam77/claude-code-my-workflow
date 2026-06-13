@@ -82,9 +82,5 @@
       }
     ]
   },
-  "plansDirectory": "quality_reports/plans",
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/statusline.sh"
-  }
+  "plansDirectory": "quality_reports/plans"
 }
