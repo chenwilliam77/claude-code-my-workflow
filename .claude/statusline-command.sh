@@ -3,6 +3,7 @@
 input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 ctx_used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 five_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -44,7 +45,10 @@ pct_color() {
 
 # --- Model ---
 model_part=""
-[ -n "$model" ] && model_part="${bold}${model}${reset}"
+if [ -n "$model" ]; then
+  model_part="${bold}${model}${reset}"
+  [ -n "$effort" ] && model_part="${model_part} ${cyan}[${effort}]${reset}"
+fi
 
 # --- Context window bar ---
 ctx_part=""
