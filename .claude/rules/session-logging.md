@@ -21,3 +21,15 @@ When wrapping up: high-level summary, quality scores, open questions, blockers.
 
 Generated **only at merge time** -- not at every commit or PR.
 Save to `quality_reports/merges/YYYY-MM-DD_[branch-name].md` using `templates/quality-report.md`.
+
+## Artifact Types at Session Close
+
+Three complementary artifacts, each serves a different need:
+
+| Artifact | Skill | Location | Purpose |
+|----------|-------|----------|---------|
+| Session log | (incremental) | `quality_reports/session_logs/` | Narrative: what happened and when |
+| Checkpoint | `/checkpoint` | `quality_reports/checkpoints/` | Technical resume: file pointers, git state, next actions |
+| Handoff | `/handoff` | `quality_reports/handoffs/` | Context: goal, decisions, reference file index for a new session |
+
+Use all three at a significant session close. The handoff is the entry point a new session reads first; it points to the checkpoint and session log for detail.

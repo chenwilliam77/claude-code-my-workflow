@@ -116,6 +116,7 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 | `/seven-pass-review` | Seven-pass adversarial manuscript review (parallel forked subagents) |
 | `/verify-claims [file]` | Chain-of-Verification fact-check (forked verifier, fresh context) |
 | `/checkpoint [topic]` | Save a structured state snapshot (active plan, decisions, file pointers, next actions) before stopping or handing off |
+| `/handoff [description]` | Create a context-rich handoff doc (`quality_reports/handoffs/`) with current state, decisions, next actions, and reference file index |
 | `/preregister [--style osf|aspredicted|aea-rct]` | Draft a preregistration document (OSF / AsPredicted / AEA RCT Registry) from a research spec |
 
 ---
