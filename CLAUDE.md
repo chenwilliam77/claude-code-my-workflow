@@ -16,7 +16,7 @@
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
 - **Verify after** -- compile/render and confirm output at the end of every task
 - **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
-- **Quality gates** -- nothing ships below 80/100
+- **Quality gates** -- nothing ships below 80/100 (unless there is no relevant quality gate to use)
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to [MEMORY.md](MEMORY.md)
 
 Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and session logs are in [quality_reports/](quality_reports/).
@@ -118,6 +118,28 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 | `/checkpoint [topic]` | Save a structured state snapshot (active plan, decisions, file pointers, next actions) before stopping or handing off |
 | `/handoff [description]` | Create a context-rich handoff doc (`quality_reports/handoffs/`) with current state, decisions, next actions, and reference file index |
 | `/preregister [--style osf|aspredicted|aea-rct]` | Draft a preregistration document (OSF / AsPredicted / AEA RCT Registry) from a research spec |
+
+---
+
+## Available Agents
+
+| Agent | Specialized For |
+|-------|-----------------|
+| `sonnet-beamer-translator` | Beamer → Quarto translation |
+| `sonnet-claim-verifier` | Fact-checking with Chain-of-Verification |
+| `sonnet-domain-referee` | Manuscript review (substantive) |
+| `sonnet-domain-reviewer` | Lecture slides (domain correctness) |
+| `sonnet-editor` | Journal editor (desk review + referee selection) |
+| `sonnet-methods-referee` | Manuscript review (methodology) |
+| `sonnet-pedagogy-reviewer` | Lecture slides (narrative, pacing, notation) |
+| `sonnet-quarto-critic` | Quarto → Beamer QA (adversarial) |
+| `sonnet-quarto-fixer` | Implements quarto-critic fixes |
+| `sonnet-r-reviewer` | R code quality & reproducibility |
+| `sonnet-slide-auditor` | Slide layout & visual consistency |
+| `sonnet-tikz-reviewer` | TikZ diagram aesthetics & correctness |
+| `sonnet-verifier` | End-to-end verification (compile, render, deploy) |
+
+*Note: Sonnet agents use Sonnet 5 model for higher quality on specialized tasks.*
 
 ---
 
