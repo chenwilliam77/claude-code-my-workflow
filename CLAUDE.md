@@ -36,8 +36,9 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ├── Quarto/                      # RevealJS .qmd files + theme
 ├── docs/                        # GitHub Pages (auto-generated)
 ├── claude_utilities/            # Claude Code infrastructure scripts (quality scoring, sync, checks)
+├── claude_tasks/                # Folder for large tasks that the user writes for Claude to implement. This folder should not be used to hold plans, reports or completion task checklists. It should just be available for the user to collect task markdown files.
 ├── programs/                    # Analysis and data cleaning code (R, Python, Stata, etc.)
-├── quality_reports/             # Plans, session logs, handoff documents, merge reports, decision records
+├── quality_reports/             # Plans, session logs, handoff documents, merge reports, decision records, task completion checklists
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
 └── master_supporting_docs/      # Papers and existing slides
