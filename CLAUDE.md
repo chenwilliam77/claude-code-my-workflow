@@ -139,8 +139,12 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 | `sonnet-slide-auditor` | Slide layout & visual consistency |
 | `sonnet-tikz-reviewer` | TikZ diagram aesthetics & correctness |
 | `sonnet-verifier` | End-to-end verification (compile, render, deploy) |
+| `haiku-verifier` | End-to-end verification — Haiku tier for mechanical exit-code/grep checks |
+| `haiku-proofreader` | Grammar/typo/overflow review — Haiku tier for mechanical pattern checks |
+| `data-analysis-project-contractor` | Orchestrates a multi-stage, multi-language data-analysis project (delegates all coding/review/verification) |
+| `data-analysis-coder` | Writes analysis code for a stage, in whichever language the task calls for |
 
-*Note: Sonnet agents use Sonnet 5 model for higher quality on specialized tasks.*
+*Note: Sonnet agents use Sonnet 5 model for higher quality on specialized tasks. Haiku agents trade judgment for cost on purely mechanical checks — see `.claude/rules/agent-model-selection.md`.*
 
 ---
 

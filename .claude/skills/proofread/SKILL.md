@@ -1,7 +1,7 @@
 ---
 name: proofread
 description: Read-only proofreading pass over lecture `.tex` or `.qmd` files. Checks grammar, typos, overflow, terminology consistency, and academic writing quality; produces a report without editing. Use when user says "proofread", "check for typos", "look for grammar issues", "copy-edit this", "any writing errors?", or before a lecture release.
-argument-hint: "[filename or 'all']"
+argument-hint: "[filename or 'all'] [optional: --model=haiku|sonnet]"
 allowed-tools: ["Read", "Grep", "Glob", "Write", "Task"]
 ---
 
@@ -16,6 +16,8 @@ Run the mandatory proofreading protocol on lecture files. This produces a report
    - If `$ARGUMENTS` is "all": review all lecture files in `Slides/` and `Quarto/`
 
 2. **For each file, launch the proofreader agent** that checks for:
+
+   **Model tier:** defaults to `proofreader` (inherit — Sonnet). If `$ARGUMENTS` includes `--model=haiku`, dispatch `haiku-proofreader` instead (see `.claude/rules/agent-model-selection.md`) — cheaper, but note the ACADEMIC QUALITY category below involves genuine judgment (awkward phrasing, missing citations), not just pattern matching, so Haiku output on that category deserves a skeptical read. `--model=sonnet` is a no-op (already the default).
 
    **GRAMMAR:** Subject-verb agreement, articles (a/an/the), prepositions, tense consistency
    **TYPOS:** Misspellings, search-and-replace artifacts, duplicated words
