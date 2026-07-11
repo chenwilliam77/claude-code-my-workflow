@@ -18,7 +18,7 @@ fi
 
 mkdir -p "$TARGET_DIR"
 
-for item in .claude claude_utilities programs templates CLAUDE.md initial_prompt.md; do
+for item in .claude claude_utilities claude_tasks programs templates CLAUDE.md ; do
     src="$SOURCE_DIR/$item"
     if [[ ! -e "$src" ]]; then
         echo "Warning: '$src' not found, skipping." >&2
