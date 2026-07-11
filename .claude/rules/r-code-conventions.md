@@ -58,7 +58,11 @@ theme_custom <- function(base_size = 14) {
 ggsave(filepath, width = 12, height = 5, bg = "transparent")
 ```
 
-## 5. RDS Data Pattern
+## 5. Tables Are Generated, Never Hand-Typed
+
+Per `content-invariants.md` INV-13: every table written into a `.tex`/`.html` file must come from `modelsummary`/`stargazer` export or code that reads and formats a csv/rds/txt — never a value computed or transcribed by hand. `\input{}` the exported file, or copy the script's output verbatim; do not retype it.
+
+## 6. RDS Data Pattern
 
 **Heavy computations saved as RDS; slide rendering loads pre-computed data.**
 
@@ -66,7 +70,7 @@ ggsave(filepath, width = 12, height = 5, bg = "transparent")
 saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
 ```
 
-## 6. Common Pitfalls
+## 7. Common Pitfalls
 
 <!-- Add your field-specific pitfalls here -->
 | Pitfall | Impact | Prevention |
@@ -74,7 +78,7 @@ saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
 | Missing `bg = "transparent"` | White boxes on slides | Always include in ggsave() |
 | Hardcoded paths | Breaks on other machines | Use relative paths |
 
-## 7. Line Length & Mathematical Exceptions
+## 8. Line Length & Mathematical Exceptions
 
 **Standard:** Keep lines <= 100 characters.
 
@@ -92,7 +96,7 @@ saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
 - Long lines in non-mathematical code: minor penalty (-1 to -2 per line)
 - Long lines in documented mathematical sections: no penalty
 
-## 8. Numerical Discipline
+## 9. Numerical Discipline
 
 See [`r-reviewer.md`](../agents/r-reviewer.md) Category 11 ("Numerical Discipline") for the full checklist. Headline rules:
 
@@ -110,7 +114,7 @@ See [`r-reviewer.md`](../agents/r-reviewer.md) Category 11 ("Numerical Disciplin
 - **Explicit `na.rm = TRUE/FALSE`.** Never rely on defaults for `mean()`, `sd()`, `sum()` on data with potential NAs.
 - **No `T` / `F`.** They're variables, not constants — write `TRUE` / `FALSE`.
 
-## 9. Code Quality Checklist
+## 10. Code Quality Checklist
 
 ```
 [ ] Packages at top via library()
@@ -121,4 +125,5 @@ See [`r-reviewer.md`](../agents/r-reviewer.md) Category 11 ("Numerical Disciplin
 [ ] RDS: every computed object saved
 [ ] Comments explain WHY not WHAT
 [ ] Numerical discipline: no float ==, CDF clamping with eps, pre-allocated vectors
+[ ] Tables: no hand-typed values — every cell traces to a script export (INV-13)
 ```

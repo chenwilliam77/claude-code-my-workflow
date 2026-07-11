@@ -80,17 +80,22 @@ Based on the research question:
 
 ### Phase 4: Publication-Ready Output
 
-**Tables:**
+**Default to figures over tables** in any HTML report — see `.claude/rules/report-format.md`. The one carve-out is standard (non-event-study) regression tables.
+
+**Tables (standard regressions only):**
 - Use `modelsummary` for regression tables (preferred) or `stargazer`
 - Include all standard elements: coefficients, SEs, significance stars, N, R-squared
 - Export as `.tex` for LaTeX inclusion and `.html` for quick viewing
+- **Event-study specs do not get a table** — visualize as a coefficient-by-event-time plot instead (e.g. `fixest::iplot()`), per `report-format.md`
+- **Never hand-type a table value.** `\input{}` the exported `.tex`/`.html` or copy the script's output verbatim — per `content-invariants.md` INV-13
 
-**Figures:**
+**Figures (default for everything else):**
 - Use `ggplot2` with project theme
 - Set `bg = "transparent"` for Beamer compatibility
 - Include proper axis labels (sentence case, units)
 - Export with explicit dimensions: `ggsave(width = X, height = Y)`
 - Save as both `.pdf` and `.png`
+- Use for: outcomes over time, comparative statics, event-study estimates, bivariate correlations (scatter + fitted line), and distributional/group comparisons
 
 ### Phase 5: Save and Review
 

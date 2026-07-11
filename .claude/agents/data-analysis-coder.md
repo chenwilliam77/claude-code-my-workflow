@@ -36,6 +36,8 @@ Before writing code, state:
 
 ### 2. Implement
 - Follow the relevant language convention file when one exists in this repo (`.claude/rules/r-code-conventions.md` for R). For Julia/Stata/Python, follow the user's global CLAUDE.md language preferences listed above — there is no repo-local convention file for those yet.
+- If the deliverable feeds an HTML report, default to a figure over a table — see `.claude/rules/report-format.md`. The exception is a standard (non-event-study) regression table; event-study specs get a coefficient-by-event-time plot, not a table.
+- **Never hand-type a table value into a `.tex`/`.html` file.** Every cell must trace to a script's programmatic output (`modelsummary`/`stargazer` export, or code that reads/formats a csv/rds/txt) — `\input{}` it or copy the output verbatim. Per `.claude/rules/content-invariants.md` INV-13.
 - Small, documented functions. No magic numbers. Relative paths only.
 - Every computed object that a later stage or a slide might need gets persisted (R: `saveRDS()`; other languages: the natural equivalent — a serialized object, not a value only printed to console).
 
