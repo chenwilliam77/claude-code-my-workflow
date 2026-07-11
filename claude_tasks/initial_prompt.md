@@ -4,6 +4,8 @@ I want our collaboration to be structured, precise, and rigorous — even if it 
 
 I’ve set up the Claude Code academic workflow (forked from pedrohcgs/claude-code-my-workflow). The configuration files are already in this repo (.claude/, CLAUDE.md, templates, programs). Please read them, understand the workflow, and then update all configuration files to fit my project — fill in placeholders in CLAUDE.md, adjust rules if needed, and propose any customizations specific to my use case. Make sure to document available agents, skills, and commands, as the CLAUDE.md file does not already have all available agents, etc. already written into it.
 
+**Important folder structure:** `quality_reports/` uses two tiers. Ephemeral LLM-generated artifacts (plans, reports, handoffs) go in default folders and are .gitignored. Important decision documents go in `tracked_plans/`, `tracked_reports/`, and `tracked_handoffs/` — these ARE tracked in git so decisions persist across sessions and machines. Use tracked folders when you explicitly save something that should be part of the project record.
+
 After that, use the plan-first workflow for all non-trivial tasks. Once I approve a plan, switch to contractor mode — coordinate everything autonomously and only come back to me when there’s ambiguity or a decision to make. For our first few sessions, check in with me a bit more often so I can learn how the workflow operates.
 
 Enter plan mode and start by adapting the workflow configuration for this project.

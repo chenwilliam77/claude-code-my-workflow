@@ -55,22 +55,54 @@ CLAUDE.local.md
 # Quarto rendering artifacts
 .quarto/
 
-# quality_reports/ — per-project session logs, plans, specs, merges.
-# The directory structure ships in the template (via .gitkeep), but the
-# content is PROJECT-INTERNAL and shouldn't be inherited by forks.
+# quality_reports/ — two-tier system for session artifacts
+#
+# TRACKED (committed to git — important decisions that persist):
+#   quality_reports/tracked_plans/           — Important plans for project record
+#   quality_reports/tracked_reports/        — Important reports for project record
+#   quality_reports/tracked_handoffs/       — Important handoffs for next session
+#   quality_reports/session_logs/           — Session narratives
+#   quality_reports/merges/                 — Quality reports at merge time
+#   quality_reports/decisions/              — Decision records
+#   quality_reports/preregistrations/       — Preregistration documents
+#
+# EPHEMERAL (NOT tracked — working artifacts, safe to ignore):
+#   quality_reports/plans/                  — LLM-generated plans (working copies)
+#   quality_reports/reports/                — LLM-generated reports (working copies)
+#   quality_reports/handoffs/               — LLM-generated handoffs (working copies)
+#   quality_reports/specs/                  — Requirements specs (working copies)
+#   quality_reports/checkpoints/            — Technical state snapshots (working copies)
+
+# Ignore ephemeral folders and their contents (but keep .gitkeep for directory structure)
 quality_reports/plans/*
+quality_reports/reports/*
+quality_reports/handoffs/*
 quality_reports/specs/*
-quality_reports/session_logs/*
-quality_reports/merges/*
-quality_reports/decisions/*
 quality_reports/checkpoints/*
-quality_reports/preregistrations/*
 !quality_reports/plans/.gitkeep
+!quality_reports/reports/.gitkeep
+!quality_reports/handoffs/.gitkeep
 !quality_reports/specs/.gitkeep
+!quality_reports/checkpoints/.gitkeep
+
+# Tracked folders — do NOT ignore (whitelist them in case parent rule is added)
+!quality_reports/tracked_plans/
+!quality_reports/tracked_reports/
+!quality_reports/tracked_handoffs/
+
+# Keep directory structure for tracked folders
+!quality_reports/tracked_plans/.gitkeep
+!quality_reports/tracked_reports/.gitkeep
+!quality_reports/tracked_handoffs/.gitkeep
+
+# Allow session_logs, merges, decisions, preregistrations (these are tracked)
+!quality_reports/session_logs/
+!quality_reports/merges/
+!quality_reports/decisions/
+!quality_reports/preregistrations/
 !quality_reports/session_logs/.gitkeep
 !quality_reports/merges/.gitkeep
 !quality_reports/decisions/.gitkeep
-!quality_reports/checkpoints/.gitkeep
 !quality_reports/preregistrations/.gitkeep
 
 # R analysis outputs (generated artifacts; keep scripts, ignore outputs)
