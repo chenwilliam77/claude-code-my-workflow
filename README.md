@@ -152,7 +152,7 @@ The guide covers Claude Code's latest capabilities:
 ## What's Included
 
 <details>
-<summary><strong>31 agents, 30 skills, 26 rules, 6 hooks</strong> (click to expand)</summary>
+<summary><strong>31 agents, 32 skills, 27 rules, 6 hooks</strong> (click to expand)</summary>
 
 ### Agents (`.claude/agents/`)
 
@@ -202,6 +202,8 @@ The guide covers Claude Code's latest capabilities:
 | `/seven-pass-review` | Seven-pass adversarial manuscript review (parallel forked subagents) |
 | `/checkpoint` | Structured session-handoff snapshot (state + plan pointers + next actions). Companion to narrative session logs. |
 | `/preregister` | Generate a preregistration document (OSF / AsPredicted / AEA RCT Registry style) from a research spec |
+| `/wrap-session` | One-command session close: session log + `/checkpoint` + `/handoff` + MEMORY.md check + git report |
+| `/contract-status` | Read-only mid-contract progress digest (plan items vs. evidence, open decisions, next action) |
 
 ### Research Workflow
 

@@ -32,4 +32,4 @@ Three complementary artifacts, each serves a different need:
 | Checkpoint | `/checkpoint` | `quality_reports/checkpoints/` | Technical resume: file pointers, git state, next actions |
 | Handoff | `/handoff` | `quality_reports/handoffs/` | Context: goal, decisions, reference file index for a new session |
 
-Use all three at a significant session close. The handoff is the entry point a new session reads first; it points to the checkpoint and session log for detail.
+Use all three at a significant session close. The handoff is the entry point a new session reads first; it points to the checkpoint and session log for detail. `/wrap-session` produces all three artifacts in one invocation.

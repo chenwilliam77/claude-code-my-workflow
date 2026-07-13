@@ -6,6 +6,21 @@ If you have forked this template, see the **Upgrading** section at the bottom fo
 
 ---
 
+## Unreleased
+
+Two new session-management skills, plus count-surface sync.
+
+### Added — new skills
+
+- **`.claude/skills/wrap-session/`** — `/wrap-session` runs the full session-close ritual in one command: appends the end-of-session block to the session log, executes the `/checkpoint` and `/handoff` workflows by reading their definitions (composition, not duplication — their `disable-model-invocation` flags block direct model-initiated Skill calls), verifies accepted `[LEARN]` entries landed in MEMORY.md, and prints a read-only git report. Never commits — recommends `/commit` when the tree is dirty. Carries `disable-model-invocation: true` (vague end-of-task phrases must not auto-trigger it). Mechanizes the session-close checklist in `.claude/rules/handoff-workflow.md` and the three-artifact table in `.claude/rules/session-logging.md`.
+- **`.claude/skills/contract-status/`** — `/contract-status` is a read-only mid-contract progress digest: resolves the active plan, cross-references its checkable items against session logs, checkpoints, decision records, recent quality reports, and git evidence, and prints a one-screen per-item status table with a suggested next action. No writes, no agent dispatch; the cheap sibling of `/checkpoint` for answering "where are we" during contractor-mode work.
+
+### Changed
+
+- One-line pointers to `/wrap-session` added to `.claude/rules/session-logging.md` and `.claude/rules/handoff-workflow.md`; skill counts synced across the monitored surfaces.
+
+---
+
 ## v1.8.0 — 2026-04-27
 
 A **disciplinary breadth + audit-hardening + Apr 2026 incorporation** minor release. The cycle landed in two passes: (1) infrastructure-only audit-hardening (mechanical parity checks via `check-skill-integrity.py`, living pet-peeves catalogue, PreCompact blocking, Routines awareness) and (2) capability work (two new skills `/checkpoint` and `/preregister`, political-science breadth via three journal profiles + two paper types + a discipline-cards reference, and Apr 2026 documentation: auto mode promotion, protected-paths gate explainer, session-management commands, Computer Use sidebar, Monitor tool integration, `disable-model-invocation` discipline). No breaking changes; counts updated across all monitored surfaces.

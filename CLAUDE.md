@@ -135,6 +135,8 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 | `/checkpoint [topic]` | Save a structured state snapshot (active plan, decisions, file pointers, next actions) before stopping or handing off |
 | `/handoff [description]` | Create a context-rich handoff doc (`quality_reports/handoffs/`) with current state, decisions, next actions, and reference file index |
 | `/preregister [--style osf|aspredicted|aea-rct]` | Draft a preregistration document (OSF / AsPredicted / AEA RCT Registry) from a research spec |
+| `/wrap-session [slug]` | One-command session close: session log + `/checkpoint` + `/handoff` + MEMORY.md check + git report |
+| `/contract-status [plan\|latest]` | Read-only mid-contract progress digest (plan items vs. evidence, next action) |
 
 ---
 

@@ -72,6 +72,8 @@ A complementary pair for transferring session context across time and collaborat
 # Commit and/or push
 ```
 
+`/wrap-session [description]` runs this checklist (plus the session-log update and MEMORY.md check) in one command.
+
 ### Session Start
 
 ```bash
