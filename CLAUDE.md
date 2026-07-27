@@ -96,73 +96,21 @@ python claude_utilities/quality_score.py Quarto/file.qmd
 | 90 | PR | Ready for deployment |
 | 95 | Excellence | Aspirational |
 
-Enforced by `/commit` (halts + asks for override); not enforced by a git pre-commit hook.
+Enforced by `/commit` (halts + asks for override) **and** — once you run `./scripts/install-hooks.sh` — by a real git pre-commit hook (`.githooks/pre-commit`) that runs the surface-sync + quality (≥80) gates on every commit. Bypass sparingly with `SKIP_QUALITY_GATE=1` or `--no-verify`.
 
 ---
 
 ## Skills Quick Reference
 
-| Command | What It Does |
-|---------|-------------|
-| `/compile-latex [file]` | 3-pass XeLaTeX + bibtex |
-| `/deploy [LectureN]` | Render Quarto + sync to docs/ |
-| `/extract-tikz [LectureN]` | TikZ → PDF → SVG |
-| `/new-diagram [snippet] [output.tex]` | Scaffold a TikZ diagram from the gallery with prevention + review |
-| `/proofread [file]` | Grammar/typo/overflow review |
-| `/visual-audit [file]` | Slide layout audit |
-| `/pedagogy-review [file]` | Narrative, notation, pacing review |
-| `/review-r [file]` | R code quality review |
-| `/qa-quarto [LectureN]` | Adversarial Quarto vs Beamer QA |
-| `/slide-excellence [file]` | Combined multi-agent review |
-| `/translate-to-quarto [file]` | Beamer → Quarto translation |
-| `/validate-bib` | Cross-reference citations |
-| `/devils-advocate` | Challenge slide design |
-| `/create-lecture` | Full lecture creation |
-| `/commit [msg]` | Stage, commit, PR, merge |
-| `/lit-review [topic]` | Literature search + synthesis |
-| `/research-ideation [topic]` | Research questions + strategies |
-| `/interview-me [topic]` | Interactive research interview |
-| `/review-paper [file]` | Manuscript review (single-pass / `--adversarial` / `--peer <journal>` simulated pipeline) |
-| `/respond-to-referees [report] [manuscript]` | R&R cross-reference + response draft |
-| `/data-analysis [dataset]` | End-to-end R analysis |
-| `/audit-reproducibility [paper]` | Enforce replication tolerance thresholds on paper ↔ code |
-| `/learn [skill-name]` | Extract discovery into persistent skill |
-| `/context-status` | Show session health + context usage |
-| `/deep-audit` | Repository-wide consistency audit |
-| `/permission-check` | Diagnose permission layers when prompts fire unexpectedly |
-| `/seven-pass-review` | Seven-pass adversarial manuscript review (parallel forked subagents) |
-| `/verify-claims [file]` | Chain-of-Verification fact-check (forked verifier, fresh context) |
-| `/checkpoint [topic]` | Save a structured state snapshot (active plan, decisions, file pointers, next actions) before stopping or handing off |
-| `/handoff [description]` | Create a context-rich handoff doc (`quality_reports/handoffs/`) with current state, decisions, next actions, and reference file index |
-| `/preregister [--style osf|aspredicted|aea-rct]` | Draft a preregistration document (OSF / AsPredicted / AEA RCT Registry) from a research spec |
-| `/wrap-session [slug]` | One-command session close: session log + `/checkpoint` + `/handoff` + MEMORY.md check + git report |
-| `/contract-status [plan\|latest]` | Read-only mid-contract progress digest (plan items vs. evidence, next action) |
+The full table of all skills lives in [README.md](README.md#skills-claudeskills). Most-used, by workflow:
 
----
+- **Slides / teaching:** `/create-lecture` `/compile-latex` `/deploy` `/qa-quarto` `/slide-excellence` `/syllabus` `/teach-from-paper` `/scaffold-exercises`
+- **Papers / review:** `/review-paper` (`--peer`) `/seven-pass-review` `/respond-to-referees` `/verify-claims` `/proofread` `/humanize` `/submission-disclosures`
+- **Data / reproducibility:** `/data-analysis` `/did-event-study` `/simulation-study` `/audit-reproducibility` `/diagnose` `/replication-package` `/capture-environment` `/power-analysis` `/disclosure-check`
+- **Research / writing:** `/interview-me` `/lit-review` `/research-ideation` `/preregister` `/grant-proposal` `/data-management-plan`
+- **Meta / workflow:** `/commit` `/learn` `/new-skill` `/checkpoint` `/context-status` `/deep-audit` `/coauthor-brief` `/triage-inbox` `/wrap-session` `/contract-status`
 
-## Available Agents
-
-| Agent | Specialized For |
-|-------|-----------------|
-| `sonnet-beamer-translator` | Beamer → Quarto translation |
-| `sonnet-claim-verifier` | Fact-checking with Chain-of-Verification |
-| `sonnet-domain-referee` | Manuscript review (substantive) |
-| `sonnet-domain-reviewer` | Lecture slides (domain correctness) |
-| `sonnet-editor` | Journal editor (desk review + referee selection) |
-| `sonnet-methods-referee` | Manuscript review (methodology) |
-| `sonnet-pedagogy-reviewer` | Lecture slides (narrative, pacing, notation) |
-| `sonnet-quarto-critic` | Quarto → Beamer QA (adversarial) |
-| `sonnet-quarto-fixer` | Implements quarto-critic fixes |
-| `sonnet-r-reviewer` | R code quality & reproducibility |
-| `sonnet-slide-auditor` | Slide layout & visual consistency |
-| `sonnet-tikz-reviewer` | TikZ diagram aesthetics & correctness |
-| `sonnet-verifier` | End-to-end verification (compile, render, deploy) |
-| `haiku-verifier` | End-to-end verification — Haiku tier for mechanical exit-code/grep checks |
-| `haiku-proofreader` | Grammar/typo/overflow review — Haiku tier for mechanical pattern checks |
-| `data-analysis-project-contractor` | Orchestrates a multi-stage, multi-language data-analysis project (delegates all coding/review/verification) |
-| `data-analysis-coder` | Writes analysis code for a stage, in whichever language the task calls for |
-
-*Note: Sonnet agents use Sonnet 5 model for higher quality on specialized tasks. Haiku agents trade judgment for cost on purely mechanical checks — see `.claude/rules/agent-model-selection.md`.*
+Stata (`/stata-replication`), R packages (`/r-package-check`), TikZ (`/extract-tikz`, `/new-diagram`), and more — see the README for the complete index.
 
 ---
 

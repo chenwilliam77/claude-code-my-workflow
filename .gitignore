@@ -72,6 +72,8 @@ CLAUDE.local.md
 #   quality_reports/handoffs/               — LLM-generated handoffs (working copies)
 #   quality_reports/specs/                  — Requirements specs (working copies)
 #   quality_reports/checkpoints/            — Technical state snapshots (working copies)
+#   quality_reports/audits/                 — Repo-specific gap analyses (working copies)
+#   quality_reports/diagnoses/              — May hold real data values/paths — never ship
 
 # Ignore ephemeral folders and their contents (but keep .gitkeep for directory structure)
 quality_reports/plans/*
@@ -79,6 +81,8 @@ quality_reports/reports/*
 quality_reports/handoffs/*
 quality_reports/specs/*
 quality_reports/checkpoints/*
+quality_reports/audits/*
+quality_reports/diagnoses/*
 !quality_reports/plans/.gitkeep
 !quality_reports/reports/.gitkeep
 !quality_reports/handoffs/.gitkeep
@@ -104,6 +108,8 @@ quality_reports/checkpoints/*
 !quality_reports/merges/.gitkeep
 !quality_reports/decisions/.gitkeep
 !quality_reports/preregistrations/.gitkeep
+!quality_reports/audits/.gitkeep
+!quality_reports/diagnoses/.gitkeep
 
 # R analysis outputs (generated artifacts; keep scripts, ignore outputs)
 scripts/R/_outputs/
