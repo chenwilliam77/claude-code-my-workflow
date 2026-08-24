@@ -5,8 +5,6 @@
     "allow": [
       "Edit(**)",
       "Bash(*)",
-      "WebFetch(*)",
-      "WebSearch",
       "Read(**)"
     ],
     "deny": []
