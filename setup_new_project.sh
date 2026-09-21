@@ -85,4 +85,9 @@ else
     echo "Warning: theorist-toolbox not found at '$THEORIST_DIR', skipping." >&2
 fi
 
+# Generate project-scoped Codex agents from the Claude agent definitions,
+# expose Claude skills at Codex's .agents/skills discovery path, and convert
+# legacy Claude commands into skills that both tools can use.
+python3 "$TARGET_DIR/claude_utilities/sync-codex-surfaces.py" "$TARGET_DIR"
+
 echo "Project initialized at: $TARGET_DIR"
